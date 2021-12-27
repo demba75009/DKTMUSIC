@@ -1,0 +1,39 @@
+.Item {
+  cursor: pointer;
+  margin: 7px;
+  float: left;
+  transition: transform 0.2s; /* Animation */
+  max-width: 30%;
+}
+
+.Item:hover {
+  transform: scale(
+    1.2
+  ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+.imgAlbum {
+  margin: 30px;
+}
+
+.nomAlbum {
+  color: orange;
+}
+
+@media screen and (max-width: 700px) {
+  .Item {
+    max-width: 40%;
+  }
+  .nomAlbum {
+    padding-left: 20%;
+  }
+  .imgAlbum {
+    max-width: 100%;
+  }
+  .Item:hover {
+    transform: scale(1);
+  }
+  .date {
+    visibility: hidden;
+  }
+}

@@ -1,0 +1,94 @@
+.disapeare {
+  visibility: hidden;
+}
+
+.track {
+  cursor: pointer;
+  color: orange;
+}
+
+track:hover {
+  color: rebeccapurple;
+}
+
+.piste {
+  width: 80%;
+  display: inline-block;
+}
+.back {
+  display: inline-block;
+  width: 100px;
+}
+
+.previous {
+  margin-top: 5%;
+  margin-left: 25%;
+  width: 100px;
+  display: inline-block;
+}
+
+.play {
+  width: 100px;
+  margin-top: 5%;
+  margin-left: 15%;
+  display: inline-block;
+}
+
+.next {
+  margin-top: 5%;
+
+  margin-right: 20%;
+  width: 100px;
+  display: inline-block;
+}
+
+.back:hover {
+  transform: scale(1.2);
+}
+
+audio::-webkit-media-controls-panel {
+  z-index: 0;
+  text-align: right;
+  bottom: auto;
+  width: 500px;
+  height: 100%;
+  background: linear-gradient(to left, white, blue);
+  /* The duration is also specified in MediaControlElements.cpp and LayoutTests/media/media-controls.js */
+  transition: opacity 0.2s;
+  stroke: #007db5;
+}
+
+audio::-webkit-media-controls-play-button {
+  display: none;
+}
+
+audio::-webkit-media-controls-current-time-display {
+  color: orange;
+}
+audio::-webkit-media-controls-time-remaining-display {
+  color: white;
+  margin: 20px;
+}
+
+audio::-webkit-media-controls-mute-button {
+  display: none;
+}
+
+@media screen and (max-width: 700px) {
+  .back {
+    max-width: 10%;
+  }
+  .play {
+    max-width: 10%;
+  }
+  .next {
+    max-width: 10%;
+  }
+  .previous {
+    max-width: 10%;
+  }
+
+  audio {
+    max-width: 90%;
+  }
+}

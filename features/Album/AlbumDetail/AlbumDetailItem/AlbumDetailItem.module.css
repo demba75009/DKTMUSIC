@@ -1,0 +1,32 @@
+.track {
+  cursor: pointer;
+  color: orange;
+}
+
+track:hover {
+  color: rebeccapurple;
+  transform: scale(1.2);
+}
+
+audio::-webkit-media-controls-panel {
+  z-index: 0;
+  text-align: right;
+  bottom: auto;
+  height: 100%;
+  background: linear-gradient(to left, red, aqua);
+  /* The duration is also specified in MediaControlElements.cpp and LayoutTests/media/media-controls.js */
+  transition: opacity 0.2s;
+  stroke: #007db5;
+}
+
+audio::-webkit-media-controls-play-button {
+  -webkit-appearance: media-play-button;
+
+  box-sizing: border-box;
+  background-color: initial;
+  color: inherit;
+}
+
+audio::-webkit-media-controls-current-time-display {
+  color: greenyellow;
+}

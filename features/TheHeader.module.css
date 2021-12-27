@@ -1,0 +1,22 @@
+.text {
+  color: orange;
+  text-decoration: none;
+}
+
+.title {
+  color: orange;
+}
+
+.favoris {
+  color: purple;
+  padding-left: 10%;
+}
+
+.favoris:hover {
+  transform: scale(1.1);
+}
+
+.text:hover {
+  transform: scale(1.1);
+  text-decoration: none;
+}

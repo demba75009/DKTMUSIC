@@ -1,0 +1,18 @@
+.Item {
+  cursor: pointer;
+  margin: 5px;
+  float: left;
+  transition: background-color 500ms ease-out 100ms;
+}
+
+.Img {
+  width: 50%;
+}
+
+.Item:hover {
+  transform: scale(1.2);
+}
+
+.text {
+  color: orange;
+}

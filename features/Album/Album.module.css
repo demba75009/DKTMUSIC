@@ -1,0 +1,23 @@
+.banniere {
+  background-image: url("https://static.wixstatic.com/media/7b6e71_14695213077448c5bac63605186ddcd4~mv2.gif");
+  width: 50%;
+  height: 200px;
+  border: 1px solid white;
+  margin: 40px;
+  display: inline-block;
+}
+
+.dktmusic {
+  color: orange;
+  margin: 70px;
+}
+
+.Liste {
+  color: orange;
+}
+
+@media screen and (max-width: 700px) {
+  .banniere {
+    max-width: 100%;
+  }
+}
