@@ -99,6 +99,10 @@ class AlbumDetail extends Component {
   ChangeId18 = (id) => {
     this.Single(id);
   };
+
+  back = () => {
+    this.props.history.push("/Album");
+  };
   render() {
     return (
       <div className="App">
@@ -110,6 +114,9 @@ class AlbumDetail extends Component {
             img={A.img}
             Artiste={A.Artiste}
             Piste={A.Piste}
+            back={() => {
+              this.back();
+            }}
             ChangeId1={() => {
               let id = [0, 1];
               this.ChangeId1(id);

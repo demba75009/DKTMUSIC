@@ -36,16 +36,40 @@ export default class SearchBar extends Component {
 
         const album1 = this.state.Album.filter(
           (e) =>
-            e.Artiste === query.charAt(0).toUpperCase() + query.slice(1) ||
-            e.Artiste[0] === query.charAt(0).toUpperCase() ||
-            e.nomAlbum === query
+            (e.Artiste[0] === query.charAt(0).toUpperCase() &&
+              e.Artiste[1] === query.charAt(1)) ^
+            (e.Artiste === query.charAt(0).toUpperCase() + query.slice(1))
         ).map((a) => a);
+
+        const album2 = this.state.Album.filter(
+          (e) =>
+            (e.Artiste[0] === query.charAt(0).toUpperCase() &&
+              e.Artiste[1] === query.charAt(1) &&
+              e.Artiste[2] === query.charAt(2)) ^
+            (e.Artiste === query.charAt(0).toUpperCase() + query.slice(1))
+        ).map((a) => a);
+
+        const albumM = this.state.Album.filter(
+          (e) => e.Artiste[0] === query.charAt(0).toUpperCase()
+        ).map((a) => a);
+
         console.log(album1);
 
         actions.setSubmitting(false);
+        if (query[0] && query[1]) {
+          this.setState({ Album: album1 });
 
-        this.setState({ Album: album1 });
-        this.props.history.push("/Album/Name");
+          this.props.history.push("/Album/Name");
+        }
+        if (query[0] && query[1] && query[2]) {
+          this.setState({ Album: album2 });
+
+          this.props.history.push("/Album/Name");
+        }
+        if (query[0] && !query[1]) {
+          this.setState({ Album: albumM });
+          this.props.history.push("/Album/Name");
+        }
       })
       .catch((err) => console.log(err));
 
@@ -137,19 +161,25 @@ export default class SearchBar extends Component {
           )}
         </Formik>
 
-        {this.state.Album.map((A) => (
-          <AlbumItem
-            key={A.id + A.nomAlbum}
-            Annee={A.Annee}
-            nomAlbum={A.nomAlbum}
-            img={A.img}
-            Artiste={A.Artiste}
-            AlbumDetail={() => this.AlbumDetail(A.id)}
-            AddFav={() => this.AddFav(A.nomAlbum)}
-            RemoveFav={() => this.RemoveFav(A.nomAlbum)}
-            Liker={this.state.Fav.map((f) => f.nomAlbum).includes(A.nomAlbum)}
-          />
-        ))}
+        {this.state.Album.length > 0 ? (
+          this.state.Album.map((A) => (
+            <AlbumItem
+              key={A.id + A.nomAlbum}
+              Annee={A.Annee}
+              nomAlbum={A.nomAlbum}
+              img={A.img}
+              Artiste={A.Artiste}
+              AlbumDetail={() => this.AlbumDetail(A.id)}
+              AddFav={() => this.AddFav(A.nomAlbum)}
+              RemoveFav={() => this.RemoveFav(A.nomAlbum)}
+              Liker={this.state.Fav.map((f) => f.nomAlbum).includes(A.nomAlbum)}
+            />
+          ))
+        ) : (
+          <h1 className="text-center text-white">
+            Aucun <p>veuillez entrez un artiste ou un ablum</p>
+          </h1>
+        )}
       </>
     );
   }

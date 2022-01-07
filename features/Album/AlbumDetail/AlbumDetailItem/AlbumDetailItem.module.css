@@ -8,6 +8,11 @@ track:hover {
   transform: scale(1.2);
 }
 
+.track1 {
+  color: orange;
+  padding-top: 50px;
+}
+
 audio::-webkit-media-controls-panel {
   z-index: 0;
   text-align: right;
@@ -29,4 +34,9 @@ audio::-webkit-media-controls-play-button {
 
 audio::-webkit-media-controls-current-time-display {
   color: greenyellow;
+}
+
+.back {
+  display: inline-block;
+  width: 100px;
 }

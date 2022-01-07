@@ -115,6 +115,10 @@ class AddAlbum extends Component {
             Track13: "",
             Track14: "",
             Track15: "",
+            Track16: "",
+            Track17: "",
+            Track18: "",
+
             Piste: [],
           }}
         >
@@ -365,6 +369,42 @@ class AddAlbum extends Component {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.Track15}
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Track16</label>
+                <input
+                  type="text"
+                  name="Track16"
+                  className="form-control"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.Track16}
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Track17</label>
+                <input
+                  type="text"
+                  name="Track17"
+                  className="form-control"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.Track17}
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Track18</label>
+                <input
+                  type="text"
+                  name="Track18"
+                  className="form-control"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.Track18}
                 />
               </div>
 

@@ -4,7 +4,14 @@ import Style from "./AlbumDetailItem.module.css";
 const AlbumDetailItem = (props) => {
   return (
     <div className={`App container   `}>
-      <h2 className={Style.track}>{props.nomAlbum} </h2>
+      <button
+        onClick={() => props.back()}
+        className={`float-left btn btn-outline-light ${Style.back}`}
+      >
+        <i class="fas fa-undo-alt"></i>
+      </button>
+
+      <h2 className={Style.track1}>{props.nomAlbum} </h2>
       <h2 className={Style.track}>{props.Artiste} </h2>
 
       <img src={props.img} />
@@ -129,6 +136,13 @@ const AlbumDetailItem = (props) => {
                 16 - {props.Track16}
               </h3>
               <hr className="bg-success w-50 text-center"></hr>
+            </>
+          ) : (
+            ""
+          )}
+
+          {props.Piste.length > 16 ? (
+            <>
               <h3
                 onClick={() => props.ChangeId17()}
                 className={`${Style.track}`}
@@ -136,11 +150,18 @@ const AlbumDetailItem = (props) => {
                 17 - {props.Track17}
               </h3>
               <hr className="bg-success w-50 text-center"></hr>
+            </>
+          ) : (
+            ""
+          )}
+
+          {props.Piste.length > 17 ? (
+            <>
               <h3
                 onClick={() => props.ChangeId18()}
                 className={`${Style.track}`}
               >
-                17 - {props.Track18}
+                18 - {props.Track18}
               </h3>
             </>
           ) : (

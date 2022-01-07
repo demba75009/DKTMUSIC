@@ -4,11 +4,7 @@ import React from "react";
 const FavorisItem = (props) => {
   return (
     <div className={`App  container col-sm-4 ${Style.Item} `}>
-      <img
-        className={Style.Img}
-        onClick={() => props.AlbumDetail()}
-        src={props.img}
-      />
+      <img className={Style.Img} src={props.img} />
       <hr></hr>
       <h2 className={Style.text}> {props.nomAlbum}</h2>
       <h6 className={Style.text}>{props.Annee}</h6>
