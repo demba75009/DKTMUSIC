@@ -18,8 +18,6 @@ export default class SearchBar extends Component {
     const query = values.query;
     this.setState({ i: true });
 
-    console.log(query.charAt(0).toUpperCase() + query.slice(1));
-
     Service.get("Album.json")
       .then((res) => {
         console.log(res.data);
@@ -36,37 +34,45 @@ export default class SearchBar extends Component {
 
         const album1 = this.state.Album.filter(
           (e) =>
-            (e.Artiste[0] === query.charAt(0).toUpperCase() &&
-              e.Artiste[1] === query.charAt(1)) ^
-            (e.Artiste === query.charAt(0).toUpperCase() + query.slice(1))
+            e.Artiste[0] === query.charAt(0).toUpperCase() &&
+            e.Artiste[1] === query.charAt(1)
+        ).map((a) => a);
+
+        const albumC = this.state.Album.filter(
+          (e) => e.Artiste === query.charAt(0).toUpperCase() + query.slice(1)
         ).map((a) => a);
 
         const album2 = this.state.Album.filter(
           (e) =>
-            (e.Artiste[0] === query.charAt(0).toUpperCase() &&
-              e.Artiste[1] === query.charAt(1) &&
-              e.Artiste[2] === query.charAt(2)) ^
-            (e.Artiste === query.charAt(0).toUpperCase() + query.slice(1))
+            e.Artiste[0] === query.charAt(0).toUpperCase() &&
+            e.Artiste[1] === query.charAt(1) &&
+            e.Artiste[2] === query.charAt(2)
         ).map((a) => a);
 
         const albumM = this.state.Album.filter(
           (e) => e.Artiste[0] === query.charAt(0).toUpperCase()
         ).map((a) => a);
 
-        console.log(album1);
+        console.log(!(query[0].toUpperCase() + query.slice(1) === query));
 
         actions.setSubmitting(false);
-        if (query[0] && query[1]) {
+
+        if (!query[0].toUpperCase() + query.slice(1) === query) {
+          console.log("ok");
+        } else this.setState({ Album: albumC });
+
+        if (query[0].toUpperCase() && query[1]) {
           this.setState({ Album: album1 });
 
           this.props.history.push("/Album/Name");
         }
-        if (query[0] && query[1] && query[2]) {
+
+        if (query[0].toUpperCase() && query[1] && query[2]) {
           this.setState({ Album: album2 });
 
           this.props.history.push("/Album/Name");
         }
-        if (query[0] && !query[1]) {
+        if (query[0].toUpperCase() && !query[1]) {
           this.setState({ Album: albumM });
           this.props.history.push("/Album/Name");
         }
@@ -141,7 +147,13 @@ export default class SearchBar extends Component {
     return (
       <>
         <Formik onSubmit={this.submit} initialValues={{ query: "" }}>
-          {({ handleSubmit, handleChange, handleBlur, isSubmitting }) => (
+          {({
+            values,
+            handleSubmit,
+            handleChange,
+            handleBlur,
+            isSubmitting,
+          }) => (
             <form className="d-flex flex-row p-2 m-2" onSubmit={handleSubmit}>
               <input
                 name="query"
@@ -155,7 +167,7 @@ export default class SearchBar extends Component {
                 type="submit"
                 disabled={isSubmitting}
               >
-                Submit
+                <i class="fas fa-search"></i>{" "}
               </button>
             </form>
           )}
@@ -177,7 +189,7 @@ export default class SearchBar extends Component {
           ))
         ) : (
           <h1 className="text-center text-white">
-            Aucun <p>veuillez entrez un artiste ou un ablum</p>
+            Aucun <p>veuillez entrez un artiste</p>
           </h1>
         )}
       </>

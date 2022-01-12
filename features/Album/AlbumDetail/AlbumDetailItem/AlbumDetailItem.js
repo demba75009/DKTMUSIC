@@ -115,6 +115,13 @@ const AlbumDetailItem = (props) => {
                 14 - {props.Track14}
               </h3>
               <hr className="bg-success w-50 text-center"></hr>
+            </>
+          ) : (
+            ""
+          )}
+
+          {props.Piste.length > 14 ? (
+            <>
               <h3
                 onClick={() => props.ChangeId15()}
                 className={`${Style.track}`}
